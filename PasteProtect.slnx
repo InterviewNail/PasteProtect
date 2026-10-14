@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/PasteProtect/PasteProtect.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/PasteProtect.Tests/PasteProtect.Tests.csproj" />
+  </Folder>
+</Solution>
