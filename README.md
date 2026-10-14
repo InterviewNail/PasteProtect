@@ -10,6 +10,15 @@ Copied:  Acme and ACME signed with acme.com
 Pasted:  Contoso and CONTOSO signed with contoso.com
 ```
 
+## Download
+
+Get the latest version from the [Releases page](https://github.com/InterviewNail/PasteProtect/releases/latest):
+
+- **PasteProtect-Standalone.exe**: runs on any Windows 10/11 PC with nothing else to install (about 50 MB).
+- **PasteProtect.exe**: a much smaller download, but needs the [.NET 10 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/10.0).
+
+There's no installer: put the exe in a folder you'll keep it in and run it. The exe isn't code-signed, so Windows may show "Windows protected your PC" the first time. Click **More info**, then **Run anyway**.
+
 ## Features
 
 - **Case-preserving replacements.** The replacement follows the capitalization of the text it replaces: `acme` → `contoso`, `ACME` → `CONTOSO`, `Acme` → `Contoso`, `Acme Corp` → `Contoso Ltd`, `acmeCorp` → `contosoLtd`.
@@ -25,7 +34,7 @@ Pasted:  Contoso and CONTOSO signed with contoso.com
 ## Requirements
 
 - Windows 10 or 11
-- [.NET 10 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/10.0) (to run), or the .NET 10 SDK (to build)
+- To build from source: the [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0)
 
 ## Usage
 
@@ -62,6 +71,17 @@ Publish a single-file exe (requires the .NET 10 Desktop Runtime on the target PC
 ```
 dotnet publish src/PasteProtect -c Release -r win-x64 --self-contained false -p:PublishSingleFile=true -p:DebugType=none -o publish
 ```
+
+## Releasing
+
+Pushing a version tag builds, tests and publishes a release with both exes attached (see [.github/workflows/release.yml](.github/workflows/release.yml)):
+
+```
+git tag v1.0.0
+git push origin v1.0.0
+```
+
+The tag also sets the version shown in the exe's file properties.
 
 ## License
 
